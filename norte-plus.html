@@ -11,17 +11,51 @@
 <body>
     <a class="skip-link" href="#contenido">Ir al contenido</a>
     <header class="site-header">
+        <div class="header-announcement"><div class="container">Boticas del Norte · Te acompañamos en todo momento</div></div>
         <div class="container header-content">
             <a class="brand" href="index.html"><img class="brand-logo" src="img/logo-boticas-del-norte.png" alt="Boticas del Norte" width="4320" height="1334"></a>
-            <nav aria-label="Navegación principal">
+            <div class="header-search" role="search" aria-label="Búsqueda de productos, próximamente">
+                <label class="header-sr-only" for="header-search-input">Buscar productos (próximamente)</label>
+                <div class="header-search-field">
+                    <input id="header-search-input" type="search" placeholder="¿Qué estás buscando?" disabled aria-describedby="header-search-note">
+                    <button type="button" disabled aria-label="Buscar, próximamente"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button>
+                </div>
+                <p id="header-search-note">Búsqueda de productos próximamente</p>
+            </div>
+            <div class="header-actions" aria-label="Próximas funciones">
+                <button class="header-action header-account" type="button" disabled aria-label="Mi cuenta, próximamente"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 22v-3a8 8 0 0 1 16 0v3"></path></svg><span>Mi cuenta<small>Próximamente</small></span></button>
+                <button class="header-action" type="button" disabled aria-label="Carrito, próximamente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 13h11l3-9H6"></path><circle cx="9" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle></svg><span>Carrito<small>Próximamente</small></span></button>
+            </div>
+            <div class="header-mobile-menu">
+                <input class="mobile-menu-toggle" type="checkbox" id="mobile-menu-toggle" aria-label="Abrir o cerrar menú móvil" aria-controls="mobile-menu-panel">
+                <label class="mobile-menu-trigger" for="mobile-menu-toggle"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span><span class="header-sr-only">Abrir menú</span></label>
+                <div class="mobile-menu-panel" id="mobile-menu-panel">
+                    <div class="mobile-panel-heading"><h2>Menú</h2><label class="mobile-menu-close" for="mobile-menu-toggle"><span aria-hidden="true">×</span><span class="header-sr-only">Cerrar menú</span></label></div>
+                    <nav class="header-mobile-nav" aria-label="Navegación principal móvil">
+                        <details class="mobile-categories">
+                            <summary>Categorías <span class="category-arrow" aria-hidden="true">›</span></summary>
+                            <ul class="mobile-category-list" aria-label="Categorías de productos"><li>Farmacia</li><li>Salud y bienestar</li><li>Vitaminas y suplementos</li><li>Cuidado personal</li><li>Mamá y bebé</li><li>Nutrición</li><li>Dermocosmética</li><li>Adulto mayor</li></ul>
+                        </details>
+                        <a href="index.html">Inicio</a>
+                        <span class="nav-pending" aria-disabled="true" title="Próximamente">Productos</span>
+                        <span class="nav-pending" aria-disabled="true" title="Próximamente">Promociones</span>
+                        <a href="norte-plus.html" aria-current="page">Norte+</a>
+                        <span class="nav-pending" aria-disabled="true" title="Próximamente">Locales</span>
+                        <span class="nav-pending" aria-disabled="true" title="Próximamente">Contacto</span>
+                        <span class="nav-pending" aria-disabled="true" title="Próximamente">Mi cuenta</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav-bar"><nav class="container header-desktop-nav" aria-label="Navegación principal">
+                <details class="desktop-categories"><summary>Categorías <span class="category-arrow" aria-hidden="true">⌄</span></summary><div class="desktop-category-panel"><p class="category-panel-title">Explora nuestras categorías</p><ul aria-label="Categorías de productos"><li>Farmacia</li><li>Salud y bienestar</li><li>Vitaminas y suplementos</li><li>Cuidado personal</li><li>Mamá y bebé</li><li>Nutrición</li><li>Dermocosmética</li><li>Adulto mayor</li></ul></div></details>
                 <a href="index.html">Inicio</a>
                 <span class="nav-pending" aria-disabled="true" title="Próximamente">Productos</span>
                 <span class="nav-pending" aria-disabled="true" title="Próximamente">Promociones</span>
                 <a href="norte-plus.html" aria-current="page">Norte+</a>
                 <span class="nav-pending" aria-disabled="true" title="Próximamente">Locales</span>
                 <span class="nav-pending" aria-disabled="true" title="Próximamente">Contacto</span>
-            </nav>
-        </div>
+        </nav></div>
     </header>
     <main id="contenido">
         <section class="hero" aria-labelledby="hero-title">
