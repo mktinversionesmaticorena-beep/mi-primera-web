@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce Norte+, el programa de beneficios de Boticas del Norte. Consulta de puntos en modo demostración.">
+    <title>Norte+ | Boticas del Norte</title>
+    <link rel="stylesheet" href="norte-plus.css">
+    <script src="norte-plus.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="index.html"><img class="brand-logo" src="img/logo-boticas-del-norte.png" alt="Boticas del Norte" width="4320" height="1334"></a>
+            <nav aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <span class="nav-pending" aria-disabled="true" title="Próximamente">Productos</span>
+                <span class="nav-pending" aria-disabled="true" title="Próximamente">Promociones</span>
+                <a href="norte-plus.html" aria-current="page">Norte+</a>
+                <span class="nav-pending" aria-disabled="true" title="Próximamente">Locales</span>
+                <span class="nav-pending" aria-disabled="true" title="Próximamente">Contacto</span>
+            </nav>
+        </div>
+    </header>
+    <main id="contenido">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div>
+                    <p class="eyebrow">CERCA DE TI, CON MÁS BENEFICIOS</p>
+                    <h1 id="hero-title" class="hero-identity" aria-label="Norte+"><span aria-hidden="true">Norte</span><img class="hero-logo" src="img/logo-norte-plus.png" alt="" width="439" height="460"></h1>
+                    <h2>Tu programa de beneficios</h2>
+                    <p class="hero-copy">Tus compras pueden convertirse en más motivos para sonreír. Conoce el programa y descubre tus puntos en un solo lugar.</p>
+                    <a class="button button-primary" href="#consulta">Consulta tus puntos <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="membership-card" aria-label="Tarjeta ilustrativa del programa Norte+">
+                    <div class="card-top"><span>BOTICAS DEL NORTE</span><span class="card-badge">BENEFICIOS</span></div>
+                    <p class="card-name">Norte<span>+</span></p>
+                    <p>Más cerca. Más beneficios.</p>
+                    <div class="card-bottom"><span>Tu bienestar suma</span><span aria-hidden="true">✦</span></div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="consulta" aria-labelledby="consulta-title">
+            <div class="container consultation-grid">
+                <div>
+                    <p class="eyebrow">TUS BENEFICIOS, A UN PASO</p>
+                    <h2 id="consulta-title">Consulta tus puntos</h2>
+                    <p class="section-copy">Ingresa el DNI de prueba para explorar cómo se verá tu consulta.</p>
+                    <div class="demo-note"><strong>Modo demostración</strong><p>Esta consulta todavía no está conectada a la base de datos real. No ingreses datos personales reales.</p><p>Usa el DNI de prueba: <strong>12345678</strong>.</p></div>
+                </div>
+                <div class="query-card">
+                    <form id="points-form">
+                        <label for="dni">DNI</label>
+                        <input id="dni" name="dni" type="text" inputmode="numeric" maxlength="8" autocomplete="off" spellcheck="false" placeholder="Ej. 12345678" aria-describedby="dni-hint" required>
+                        <p class="input-hint" id="dni-hint">Ingresa los 8 dígitos del DNI de demostración.</p>
+                        <button class="button button-primary" type="submit">Consultar</button>
+                    </form>
+                    <div id="query-feedback" role="status" aria-live="polite" aria-atomic="true">
+                        <p class="initial-message">El resultado de demostración aparecerá aquí.</p>
+                    </div>
+                    <noscript><p>Activa JavaScript en tu navegador para utilizar la consulta de demostración.</p></noscript>
+                </div>
+            </div>
+        </section>
+        <section class="section steps-section" aria-labelledby="steps-title">
+            <div class="container">
+                <div class="section-heading"><p class="eyebrow">ASÍ DE SIMPLE</p><h2 id="steps-title">¿Cómo funciona Norte+?</h2><p>Conoce la idea del programa en tres pasos.</p></div>
+                <ol class="steps">
+                    <li><span class="step-number" aria-hidden="true">01</span><h3>Compra</h3><p>Encuentra lo que necesitas para tu bienestar en Boticas del Norte.</p></li>
+                    <li><span class="step-number" aria-hidden="true">02</span><h3>Acumula</h3><p>Suma puntos con las compras que participen en el programa.</p></li>
+                    <li><span class="step-number" aria-hidden="true">03</span><h3>Disfruta</h3><p>Accede a los beneficios que se habiliten para los miembros de Norte+.</p></li>
+                </ol>
+                <p class="program-note">Consulta los Términos y Condiciones para conocer las reglas de acumulación, canje y beneficios de Norte+.</p>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="terms-title">
+            <div class="container terms-card">
+                <div><p class="eyebrow">INFORMACIÓN DEL PROGRAMA</p><h2 id="terms-title">Términos y condiciones</h2><p id="terms-note">Consulta los términos y condiciones del programa en una nueva pestaña o descarga el PDF.</p></div>
+                <div class="terms-actions"><a class="button button-outline" href="pdf/terminos-condiciones-norte-plus.pdf" target="_blank" rel="noopener noreferrer" aria-describedby="terms-note">Ver términos y condiciones</a><a class="button button-outline" href="pdf/terminos-condiciones-norte-plus.pdf" download="terminos-condiciones-norte-plus.pdf" aria-describedby="terms-note">Descargar PDF</a></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container footer-content"><a class="footer-brand" href="index.html">BOTICAS DEL NORTE</a><p>Tu bienestar nos une.</p></div></footer>
+</body>
+</html>
