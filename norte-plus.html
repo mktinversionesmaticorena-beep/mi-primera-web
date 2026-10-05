@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conoce Norte+, el programa de beneficios de Boticas del Norte. Consulta de puntos en modo demostración.">
+    <meta name="description" content="Conoce Norte+, el programa de beneficios de Boticas del Norte. Consulta tus puntos Norte+.">
     <title>Norte+ | Boticas del Norte</title>
     <link rel="stylesheet" href="norte-plus.css">
     <script src="norte-plus.js" defer></script>
@@ -80,20 +80,19 @@
                 <div>
                     <p class="eyebrow">TUS BENEFICIOS, A UN PASO</p>
                     <h2 id="consulta-title">Consulta tus puntos</h2>
-                    <p class="section-copy">Ingresa el DNI de prueba para explorar cómo se verá tu consulta.</p>
-                    <div class="demo-note"><strong>Modo demostración</strong><p>Esta consulta todavía no está conectada a la base de datos real. No ingreses datos personales reales.</p><p>Usa el DNI de prueba: <strong>12345678</strong>.</p></div>
+                    <p class="section-copy">Ingresa tu DNI, Carné de Extranjería o RUC para consultar tus puntos Norte+.</p>
                 </div>
                 <div class="query-card">
                     <form id="points-form">
-                        <label for="dni">DNI</label>
-                        <input id="dni" name="dni" type="text" inputmode="numeric" maxlength="8" autocomplete="off" spellcheck="false" placeholder="Ej. 12345678" aria-describedby="dni-hint" required>
-                        <p class="input-hint" id="dni-hint">Ingresa los 8 dígitos del DNI de demostración.</p>
+                        <label for="dni">DNI, Carné de Extranjería o RUC</label>
+                        <input id="dni" name="dni" type="text" inputmode="numeric" minlength="8" maxlength="11" pattern="[0-9]{8,11}" autocomplete="off" spellcheck="false" placeholder="Ingresa tu documento" aria-describedby="dni-hint" required>
+                        <p class="input-hint" id="dni-hint">Ingresa entre 8 y 11 dígitos, solo números.</p>
                         <button class="button button-primary" type="submit">Consultar</button>
                     </form>
                     <div id="query-feedback" role="status" aria-live="polite" aria-atomic="true">
-                        <p class="initial-message">El resultado de demostración aparecerá aquí.</p>
+                        <p class="initial-message">El resultado de tu consulta aparecerá aquí.</p>
                     </div>
-                    <noscript><p>Activa JavaScript en tu navegador para utilizar la consulta de demostración.</p></noscript>
+                    <noscript><p>Activa JavaScript en tu navegador para consultar tus puntos.</p></noscript>
                 </div>
             </div>
         </section>
