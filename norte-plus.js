@@ -7,6 +7,68 @@ const submitButton = form.querySelector('button[type="submit"]');
 const endpoint = "https://ftkpjvwsumotjszmjzgb.supabase.co/functions/v1/consultar-puntos";
 const connectionError = "No pudimos realizar la consulta en este momento. Inténtalo nuevamente.";
 let consulting = false;
+const verificationStatus = document.getElementById("verification-status");
+let turnstileToken = "";
+let widgetId = null;
+
+function updateSubmitButton() {
+    submitButton.disabled = consulting || !turnstileToken;
+}
+
+function setVerificationStatus(message, isError = false) {
+    verificationStatus.textContent = message;
+    verificationStatus.classList.toggle("is-error", isError);
+}
+
+function invalidateVerification(message, isError = false) {
+    turnstileToken = "";
+    updateSubmitButton();
+    setVerificationStatus(message, isError);
+}
+
+function resetVerification(message = "Completa la nueva verificación para consultar.") {
+    invalidateVerification(message);
+    try {
+        if (widgetId === null || !window.turnstile) throw new Error("Verificación no disponible");
+        window.turnstile.reset(widgetId);
+    } catch {
+        invalidateVerification("No pudimos iniciar la verificación. Recarga la página para intentarlo nuevamente.", true);
+    }
+}
+
+updateSubmitButton();
+let turnstileInitializationStarted = false;
+
+window.onTurnstileLoad = function () {
+    if (turnstileInitializationStarted) return;
+    turnstileInitializationStarted = true;
+    try {
+        widgetId = window.turnstile.render("#turnstile-widget", {
+            sitekey: "0x4AAAAAAFPWOjZxt5Ima4HW",
+            size: "compact",
+            theme: "light",
+            language: "es",
+            "response-field": false,
+            callback: (token) => {
+                if (consulting) return;
+                turnstileToken = token;
+                updateSubmitButton();
+                setVerificationStatus("Verificación completada. Ya puedes consultar.");
+            },
+            "expired-callback": () => resetVerification("La verificación expiró. Completa una nueva verificación."),
+            "timeout-callback": () => resetVerification("La verificación agotó el tiempo. Inténtalo nuevamente."),
+            "error-callback": () => {
+                invalidateVerification("La verificación falló. Espera el reintento o recarga la página.", true);
+            }
+        });
+    } catch {
+        invalidateVerification("No pudimos iniciar la verificación. Recarga la página para intentarlo nuevamente.", true);
+    }
+};
+
+function handleTurnstileLoadError() {
+    invalidateVerification("No se pudo cargar la verificación. Recarga la página para intentarlo nuevamente.", true);
+}
 
 function showMessage(text, className = "error-message") {
     const message = document.createElement("p");
@@ -25,8 +87,14 @@ form.addEventListener("submit", async (event) => {
         return;
     }
 
+    if (!turnstileToken) {
+        setVerificationStatus("Completa la verificación de seguridad antes de consultar.", true);
+        return;
+    }
+
+    const requestToken = turnstileToken;
     consulting = true;
-    submitButton.disabled = true;
+    invalidateVerification("Consulta en curso. La verificación se renovará al finalizar.");
     submitButton.textContent = "Consultando...";
     dniInput.disabled = true;
     form.setAttribute("aria-busy", "true");
@@ -36,7 +104,7 @@ form.addEventListener("submit", async (event) => {
         const response = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ documento })
+            body: JSON.stringify({ documento, turnstileToken: requestToken })
         });
         const result = await response.json();
         if (!result || typeof result !== "object") throw new Error("Respuesta inesperada");
@@ -75,7 +143,7 @@ form.addEventListener("submit", async (event) => {
         showMessage(connectionError);
     } finally {
         consulting = false;
-        submitButton.disabled = false;
+        resetVerification();
         submitButton.textContent = "Consultar";
         dniInput.disabled = false;
         form.removeAttribute("aria-busy");

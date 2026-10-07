@@ -7,6 +7,7 @@
     <title>Norte+ | Boticas del Norte</title>
     <link rel="stylesheet" href="norte-plus.css">
     <script src="norte-plus.js" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&amp;onload=onTurnstileLoad" defer onerror="handleTurnstileLoadError()"></script>
 </head>
 <body>
     <a class="skip-link" href="#contenido">Ir al contenido</a>
@@ -87,11 +88,14 @@
                         <label for="dni">DNI, Carné de Extranjería o RUC</label>
                         <input id="dni" name="dni" type="text" inputmode="numeric" minlength="8" maxlength="11" pattern="[0-9]{8,11}" autocomplete="off" spellcheck="false" placeholder="Ingresa tu documento" aria-describedby="dni-hint" required>
                         <p class="input-hint" id="dni-hint">Ingresa entre 8 y 11 dígitos, solo números.</p>
-                        <button class="button button-primary" type="submit">Consultar</button>
+                        <div id="turnstile-widget" class="turnstile-widget"></div>
+                        <p id="verification-status" class="verification-status" role="status" aria-live="polite" aria-atomic="true">Cargando verificación de seguridad...</p>
+                        <button class="button button-primary" type="submit" aria-describedby="verification-status" disabled>Consultar</button>
                     </form>
                     <div id="query-feedback" role="status" aria-live="polite" aria-atomic="true">
                         <p class="initial-message">El resultado de tu consulta aparecerá aquí.</p>
                     </div>
+                    <p class="points-update-note">Los puntos acumulados pueden tardar hasta 24 horas en verse reflejados.</p>
                     <noscript><p>Activa JavaScript en tu navegador para consultar tus puntos.</p></noscript>
                 </div>
             </div>
