@@ -106,6 +106,10 @@ form.addEventListener("submit", async (event) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ documento, turnstileToken: requestToken })
         });
+        if (response.status === 429) {
+            showMessage("Has realizado varias consultas en poco tiempo. Por seguridad, espera unos minutos antes de volver a intentarlo.");
+            return;
+        }
         const result = await response.json();
         if (!result || typeof result !== "object") throw new Error("Respuesta inesperada");
 
